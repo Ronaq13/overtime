@@ -3,9 +3,17 @@ require 'rails_helper'
 RSpec.describe Post, type: :model do
   describe 'Creations' do
     before do
+      User.create(
+        email: 'test@test.com',
+        password: 'asdfasdf',
+        password_confirmation: 'asdfasdf',
+        first_name: 'raounak',
+        last_name: 'sharma'
+      )
       @post = Post.create(
         date: Date.today,
-        rationale: 'Anything'
+        rationale: 'Anything',
+        user_id: User.first.id
       )
     end
 
